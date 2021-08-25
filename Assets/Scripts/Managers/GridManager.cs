@@ -6,6 +6,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public Dimensions gridDimensions;
+    public float gridOffset = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,3 +27,4 @@ public struct Dimensions
     [SerializeField][Range(50f, 250f)]
     int VerticalTiles;
 }
+
