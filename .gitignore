@@ -37,3 +37,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+.idea/.idea.Tower-Defense-Game/.idea/
+
+*.DotSettings
