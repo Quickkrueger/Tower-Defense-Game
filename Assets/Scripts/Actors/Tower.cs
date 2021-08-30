@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour
     private GameObject turret;
     private List<GameObject> targets = null;
     private GameObject currentTarget = null;
+    private Rigidbody turretRB = null;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class Tower : MonoBehaviour
         towerModel = Instantiate(towerData.towerPrefab);
         towerModel.transform.parent = rangeCollider.transform;
         turret = towerModel.transform.GetChild(0).gameObject;
+        turretRB = turret.GetComponent<Rigidbody>();
 
         targets = new List<GameObject>();
 
@@ -33,7 +35,19 @@ public class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        turret.transform.Rotate(0f, 10 * Time.deltaTime, 0f);
+        if (currentTarget == null)
+        {
+            turret.transform.Rotate(0f, 10 * Time.deltaTime, 0f);
+        }
+        else
+        {
+            TrackTarget();
+        }
+    }
+
+    void TrackTarget()
+    {
+        turret.transform.LookAt(new Vector3(currentTarget.transform.position.x, turret.transform.position.y, currentTarget.transform.position.z));
     }
 
     private void OnTriggerEnter(Collider other)
