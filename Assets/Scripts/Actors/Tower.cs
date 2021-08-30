@@ -30,6 +30,9 @@ public class Tower : MonoBehaviour
         towerModel.transform.parent = rangeCollider.transform;
         turret = towerModel.transform.GetChild(0).gameObject;
         turretRB = turret.GetComponent<Rigidbody>();
+        
+        towerModel.transform.localPosition = Vector3.zero;
+        
         projectileSpawn = transform.GetChild(1);
 
         targets = new List<GameObject>();
