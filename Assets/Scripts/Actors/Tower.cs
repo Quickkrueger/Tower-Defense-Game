@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    int damage;
-    float range;
-    float attackSpeed;
+    private int damage;
+    private float range;
+    private float attackSpeed;
     public TowerScriptableObject towerData;
     public GameObject rangeCollider;
     private GameObject towerModel;
@@ -15,6 +15,9 @@ public class Tower : MonoBehaviour
     private List<GameObject> targets = null;
     private GameObject currentTarget = null;
     private Rigidbody turretRB = null;
+    private bool canFire = true;
+    private float recharging = 0;
+    private Transform projectileSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,7 @@ public class Tower : MonoBehaviour
         towerModel.transform.parent = rangeCollider.transform;
         turret = towerModel.transform.GetChild(0).gameObject;
         turretRB = turret.GetComponent<Rigidbody>();
+        projectileSpawn = transform.GetChild(1);
 
         targets = new List<GameObject>();
 
@@ -42,12 +46,33 @@ public class Tower : MonoBehaviour
         else
         {
             TrackTarget();
+            
+            if (canFire)
+            {
+                FireAtTarget();
+                canFire = false;
+            }
+        }
+        
+        if (recharging > attackSpeed && !canFire)
+        {
+            canFire = true;
+            recharging = 0;
+        }
+        else if(!canFire)
+        {
+            recharging += Time.deltaTime;
         }
     }
 
     void TrackTarget()
     {
         turret.transform.LookAt(new Vector3(currentTarget.transform.position.x, turret.transform.position.y, currentTarget.transform.position.z));
+    }
+
+    void FireAtTarget()
+    {
+        Instantiate(towerData.projectilePrefab, projectileSpawn.position, turret.transform.rotation);
     }
 
     private void OnTriggerEnter(Collider other)

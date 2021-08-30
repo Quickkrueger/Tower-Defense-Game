@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32da7cdae899034396cb41934cfdb54, type: 3}
   m_Name: Basic Tower
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 2592874317755369583, guid: 0e5b0b1ff30397840b24ef46c3700b35,
+    type: 3}
   towerPrefab: {fileID: 3977928871976562066, guid: 46e2a6211e162df41be5fabd7836947f,
     type: 3}
   damage: 5
