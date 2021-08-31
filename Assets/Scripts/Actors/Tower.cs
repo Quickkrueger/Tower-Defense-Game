@@ -8,35 +8,45 @@ public class Tower : MonoBehaviour
     private int damage;
     private float range;
     private float attackSpeed;
-    public TowerScriptableObject towerData;
+
+    private TowerScriptableObject towerData;
+
+    public TowerScriptableObject[] towersAvailable;
     public GameObject rangeCollider;
+
     private GameObject towerModel;
-    private GameObject turret;
     private List<GameObject> targets = null;
     private GameObject currentTarget = null;
-    private Rigidbody turretRB = null;
     private bool canFire = true;
     private float recharging = 0;
     private Transform projectileSpawn;
+    private const float rotateSpeed = 20f;
 
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+    public Transform InitializeTower(Transform tile, int towerIndex = 0)
+    {
+
+        towerData = towersAvailable[towerIndex];
+
         damage = towerData.damage;
         attackSpeed = towerData.attackSpeed;
         range = towerData.range;
 
         towerModel = Instantiate(towerData.towerPrefab);
         towerModel.transform.parent = rangeCollider.transform;
-        turret = towerModel.transform.GetChild(0).gameObject;
-        turretRB = turret.GetComponent<Rigidbody>();
-        
+
         towerModel.transform.localPosition = Vector3.zero;
-        
+
         projectileSpawn = transform.GetChild(1);
 
         targets = new List<GameObject>();
 
+        return gameObject.transform;
     }
 
     // Update is called once per frame
@@ -44,7 +54,7 @@ public class Tower : MonoBehaviour
     {
         if (currentTarget == null)
         {
-            turret.transform.Rotate(0f, 10 * Time.deltaTime, 0f);
+            towerModel.transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
         }
         else
         {
@@ -70,12 +80,12 @@ public class Tower : MonoBehaviour
 
     void TrackTarget()
     {
-        turret.transform.LookAt(new Vector3(currentTarget.transform.position.x, turret.transform.position.y, currentTarget.transform.position.z));
+        towerModel.transform.LookAt(new Vector3(currentTarget.transform.position.x, towerModel.transform.position.y, currentTarget.transform.position.z));
     }
 
     void FireAtTarget()
     {
-        Instantiate(towerData.projectilePrefab, projectileSpawn.position, turret.transform.rotation);
+        Instantiate(towerData.projectilePrefab, projectileSpawn.position, towerModel.transform.rotation);
     }
 
     private void OnTriggerEnter(Collider other)
