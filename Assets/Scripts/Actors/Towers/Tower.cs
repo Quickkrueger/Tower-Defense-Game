@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +9,7 @@ public class Tower : MonoBehaviour
 
     private TowerScriptableObject towerData;
 
-    public TowerScriptableObject[] towersAvailable;
+    public ScriptObjList towersAvailable;
     public GameObject rangeCollider;
 
     private GameObject towerModel;
@@ -28,13 +26,13 @@ public class Tower : MonoBehaviour
 
     }
 
-    public Transform InitializeTower(Transform tile, int towerIndex = 0)
+    public Transform InitializeTower(Transform tile)
     {
 
-        towerData = towersAvailable[towerIndex];
+        towerData = (TowerScriptableObject)towersAvailable.objectList[towersAvailable.Index];
 
         damage = towerData.damage;
-        attackSpeed = towerData.attackSpeed;
+        attackSpeed = 10f / towerData.attackSpeed;
         range = towerData.range;
 
         towerModel = Instantiate(towerData.towerPrefab);

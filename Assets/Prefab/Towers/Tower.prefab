@@ -91,8 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1be12c082964a4b8b0859449680bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towersAvailable:
-  - {fileID: 11400000, guid: 4ee9dd842f8e6a7478cc7dd3b94b609f, type: 2}
+  towersAvailable: {fileID: 11400000, guid: 1f5e0fbc7027a5f4281cd4809d1a5f0c, type: 2}
   rangeCollider: {fileID: 6669412772317010280}
 --- !u!54 &669810987
 Rigidbody:
@@ -133,8 +132,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6669412773442177008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6669412772811380801}
