@@ -9,4 +9,9 @@ public class FloatData : ScriptableObject
     {
         value += num;
     }
+
+    public void ResetValue(float num)
+    {
+        value = num;
+    }
 }
