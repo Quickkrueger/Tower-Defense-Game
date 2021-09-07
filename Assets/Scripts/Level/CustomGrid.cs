@@ -14,7 +14,7 @@ public class CustomGrid : MonoBehaviour
     {
         tiles = new List<GridTile>();
         path = new List<GridTile>();
-        pathLength = (int)(dimensions.x * dimensions.y * 0.4f);
+        pathLength = (int)(dimensions.x * dimensions.y * 0.5f);
         GenerateGrid();
         GeneratePath();
     }
