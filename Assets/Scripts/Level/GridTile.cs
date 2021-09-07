@@ -18,9 +18,20 @@ public class GridTile : MonoBehaviour
         
     }
 
-    public void TileToPath()
+    public bool IsPath
     {
-        isPath = true;
+        get { return isPath; }
+        set { 
+            isPath = value;
+            if (isPath)
+            {
+                GetComponent<MeshRenderer>().material.color = Color.black;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().material.color = Color.white;
+            }
+        }
     }
 
     private void OnMouseDown()
