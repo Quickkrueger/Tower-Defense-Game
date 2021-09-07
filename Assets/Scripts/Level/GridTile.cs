@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class GridTile : MonoBehaviour
 {
     Transform currentTower;
+    bool isPath;
     public GameObject towerPrefab;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,11 @@ public class GridTile : MonoBehaviour
         
     }
 
+    public void TileToPath()
+    {
+        isPath = true;
+    }
+
     private void OnMouseDown()
     {
         EventSystem eventSystem = EventSystem.current;
@@ -25,7 +31,7 @@ public class GridTile : MonoBehaviour
             return;
         }
 
-        if (currentTower == null)
+        if (currentTower == null && !isPath)
         {
             GameObject newTower = Instantiate(towerPrefab);
             Tower newTowerScript = newTower.GetComponent<Tower>();
