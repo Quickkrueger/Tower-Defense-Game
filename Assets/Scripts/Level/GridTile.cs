@@ -26,10 +26,12 @@ public class GridTile : MonoBehaviour
             if (isPath)
             {
                 GetComponent<MeshRenderer>().material.color = Color.black;
+                GetComponent<MeshRenderer>().enabled = true;
             }
             else
             {
                 GetComponent<MeshRenderer>().material.color = Color.white;
+                GetComponent<MeshRenderer>().enabled = false;
             }
         }
     }
