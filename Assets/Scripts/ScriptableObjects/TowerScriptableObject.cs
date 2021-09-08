@@ -5,6 +5,7 @@ public class TowerScriptableObject : ScriptableObject
 {
     public GameObject projectilePrefab;
     public GameObject towerPrefab;
+    public int cost;
     public int damage;
     public float range;
     public float attackSpeed;

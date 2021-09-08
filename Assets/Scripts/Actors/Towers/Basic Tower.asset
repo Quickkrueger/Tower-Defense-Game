@@ -16,6 +16,7 @@ MonoBehaviour:
     type: 3}
   towerPrefab: {fileID: 3977928871976562066, guid: 46e2a6211e162df41be5fabd7836947f,
     type: 3}
+  cost: 5
   damage: 5
   range: 5
   attackSpeed: 5

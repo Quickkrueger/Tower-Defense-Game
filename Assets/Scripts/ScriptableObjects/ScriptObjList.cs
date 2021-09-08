@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScriptObjectList", menuName = "ScriptableObjects/Test/ScriptObjectList", order = 1)]
+[CreateAssetMenu(fileName = "ScriptObjectList", menuName = "ScriptableObjects/DataStorage/ScriptObjectList", order = 1)]
 public class ScriptObjList : ScriptableObject
 {
     public ScriptableObject[] objectList;
@@ -8,6 +8,11 @@ public class ScriptObjList : ScriptableObject
     public int Index
     {
         get { return currentObjectIndex; }
+    }
+
+    public ScriptableObject GetCurrentItem()
+    {
+        return objectList[currentObjectIndex];
     }
 
     public void SetCurrentObject(int index)

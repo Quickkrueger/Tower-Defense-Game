@@ -112,3 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 6669412772811380806, guid: 2425af117c3ae01469aebfe127ffa397,
     type: 3}
+  wallet: {fileID: 11400000, guid: 9b05c9e8114711e4d9f7083dffea27f0, type: 2}
